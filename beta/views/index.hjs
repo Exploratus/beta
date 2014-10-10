@@ -3,10 +3,41 @@
   <head>
     <title>{{ title }}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/javascripts/leaflet/leaflet.css' />
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="/javascripts/leaflet/leaflet.js"></script>
+    
   </head>
   <body>
     <h1>{{ title }}</h1>
+    <div id="map"></div>
     <p>Welcome to {{ title }}</p>
     <p> THis is a node.js installation for our new future with {{ title }}.</p>
   </body>
+  <script>
+
+
+var map = L.map('map').setView([25.726, -80.24], 16);
+
+L.tileLayer('http://{s}.tiles.mapbox.com/v3/exploratus.jnpa7nla/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    maxZoom: 18
+}).addTo(map);
+
+var marker = L.marker([51.5, -0.09]).addTo(map);
+
+var circle = L.circle([51.508, -0.11], 500, {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5
+}).addTo(map);
+
+var polygon = L.polygon([
+    [51.509, -0.08],
+    [51.503, -0.06],
+    [51.51, -0.047]
+]).addTo(map);
+
+</script>
+  
 </html>
